@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//script handles the animated UI timer slider in bottom right of screen and loads the end game scene when time runs out
 public class TimerSlider : MonoBehaviour
 {
     public LevelLoader levelLoader;
@@ -27,13 +28,8 @@ public class TimerSlider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (resetTime)
-       // {
-       //     
-       // }
         float time = gameTime - Time.timeSinceLevelLoad;
        
-
         if( time <= 0)
         {
             stopTimer = true;

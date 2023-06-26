@@ -9,7 +9,6 @@ using UnityEngine.UI;
 
 public class PowerUpManager : MonoBehaviour
 {
-    //public ScoreManager scoreManager;
 
     public GameObject maxNPKPanel;
     public AudioSource audioSource;
@@ -33,6 +32,7 @@ public class PowerUpManager : MonoBehaviour
     bool tBarFull;
     bool nBarFull;
 
+    //set references and reset values
     private void Start()
     {
         bBarValue = bananaBar.fillAmount;
@@ -49,13 +49,9 @@ public class PowerUpManager : MonoBehaviour
         boostIcon.SetActive(false);
         doublePoints.SetActive(false);
     }
-
+    //check if UI bar full
     public void Update()
     {
-       //Debug.Log(bBarValue + "banana");
-       //Debug.Log(tBarValue + "tuna");
-       //Debug.Log(nBarValue + "nitrous");
-
         CheckAmounts();
 
         if(bBarValue >= 1f)
@@ -71,12 +67,13 @@ public class PowerUpManager : MonoBehaviour
             nBarFull = true;
         }
     }
+    //check UI bar amounts as they update
     void CheckAmounts()
     {
         bBarValue = bananaBar.fillAmount;
         tBarValue = tunaBar.fillAmount;
         nBarValue = no2Bar.fillAmount;
-
+        //if all bars full then enable the time freeze event and UI and score bonus
         if(bBarFull && tBarFull && nBarFull)
         {
             MaxNPK();
@@ -88,18 +85,12 @@ public class PowerUpManager : MonoBehaviour
         {
             maxNPKPanel.SetActive(true);
             audioSource.PlayOneShot(maxNPKAchieved, 5f);
-            //MaxNPKBonus();
         }
         else
         {
             return;
         }
     }
-
-   // void MaxNPKBonus()
-   // {
-   //     scoreManager.IncreaseScore(2000f);
-   // }
 
     public void EnablePowerUpUI(GameObject powerUpUI)
     {
@@ -112,9 +103,4 @@ public class PowerUpManager : MonoBehaviour
     {
         powerUpUI.SetActive(false);
     }
-
-  //public void IncreaseCount()
-  //{
-  //    count += 1;
-  //}
 }

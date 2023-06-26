@@ -14,6 +14,7 @@ public class FlashControl : MonoBehaviour
     public EndingManager endingManager;
     public bool playerEaten;
 
+    //script handles the ending cutscens depending on the values of the ending manager script
     private void OnEnable()
     {
         if (endingManager.win)

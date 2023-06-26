@@ -6,8 +6,6 @@ using UnityEngine.UIElements;
 
 public class EndingManager : MonoBehaviour
 {
-    //public HighscoreTable leaderboard;
-    //public ScoreManager scoreManager;
     public Animator newHighscoreAnim;
 
     public GameObject leaderBoard;
@@ -28,16 +26,13 @@ public class EndingManager : MonoBehaviour
 
     public GameObject endScreen;
     public GameObject endScreenText;
-    //public Image endScreenImage;
-    public GameObject flash;
-    //public Image flashImage;
 
-    //public GameObject highScore;
+    public GameObject flash;
+
     public GameObject currentScore;
 
     public TextMeshProUGUI winLoseText;
     public TextMeshProUGUI currentScoreText;
-    //public TextMeshProUGUI highScoreText;
 
     public int newHighScoreValue;
     public bool newHighscore;
@@ -47,15 +42,9 @@ public class EndingManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //currentScoreText = currentScore.GetComponent<TextMeshProUGUI>();
-        //highScoreText = highScore.GetComponent<TextMeshProUGUI>();
-        
-
-
+        //gets the score from previous scene
         currentScoreText.text = PlayerPrefs.GetFloat("currentScore").ToString();
-        //highScoreText.text = PlayerPrefs.GetFloat("HighScore").ToString();
-        //PlayerPrefs.SetFloat("HighScore", 0);
-
+        //checks if new highscore
         if (PlayerPrefs.GetFloat("currentScore") >= PlayerPrefs.GetFloat("HighScore"))
         {
             newHighScoreValue = (int)(PlayerPrefs.GetFloat("currentScore"));
@@ -66,37 +55,22 @@ public class EndingManager : MonoBehaviour
             newHighScoreValue = (int)(PlayerPrefs.GetFloat("currentScore"));
             newHighscore = false;
         }
-
+        //makes sure ending UI elements are set to off
         flash.SetActive(false);
         endScreen.SetActive(false);
         leaderBoard.SetActive(false);
-        //CheckScore();
-       // CheckResult();
-       // win = false;
-
-        
-        
-      // {
-      //     snailAnimator.SetBool("alive", win);
-      //     //flash red
-      //     //player disabled
-      //     //snail anim scale towards screen eaten mouth
-      //     //animation event flash red
-      //     loseScreen.SetActive(true);
-      // }
     }
-
+    //in charge of enabling game object with various onEnable animations and scripts that modify flash object depending on win/loss/score and then animation events call functions accordingly
     public void EnableFlash()
     {
         flash.SetActive(true);
     }
-
+    //checks result
     void CheckResult()
     {
         if (score >= target)
         {
             win = true;
-            //WinDecapitate();
         }
         else
         {
@@ -118,6 +92,7 @@ public class EndingManager : MonoBehaviour
             winLoseText.text = "GAME OVER";
         }
     }
+    //win cutscene direction including my notes pre implementation
     public void WinDecapitate()
     {
         //grow
@@ -129,26 +104,25 @@ public class EndingManager : MonoBehaviour
         //snail monster in half
         //win screen
     }
+    //gets score and calls CheckResult() function. Called by animation event
     public void CheckScore()
     {
         score = PlayerPrefs.GetFloat("currentScore");
         CheckResult();
             Debug.Log(score);
     }
-
-    
-
+    //in charge of playing new highscore pulse anim
     public void PlayNewHighScoreAnim()
     {
         newHighscoreAnim.SetBool("newHighscore", true);
     }
-
+    
     public void EnableLeaderBoard()
     {
         endScreenText.SetActive(false);
         leaderBoard.SetActive(true);
     }
-
+    //enables leaderboard on animation event
     public void InvokeHighScoreANimLeaderboard()
     {
         if (newHighscore)

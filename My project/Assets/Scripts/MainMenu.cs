@@ -12,8 +12,9 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Intro");
     }
 
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
+    //commented out for webGL build
+   //public void QuitGame()
+   //{
+   //    Application.Quit();
+   //}
 }

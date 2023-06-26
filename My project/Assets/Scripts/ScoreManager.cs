@@ -13,8 +13,6 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI distanceText;
     public TextMeshProUGUI hiScoreText;
 
-    //public bool newHighscore;
-
     public float distanceCount;
     public float hiScoreCount;
 
@@ -30,31 +28,33 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //make sure pick up buffs are set to off
+        doublePoints = false;
         nos = false;
+        //fetch highscore
         if(PlayerPrefs.HasKey("HighScore"))
         {
             hiScoreCount = PlayerPrefs.GetFloat("HighScore");
             
         }
-        //PlayerPrefs.SetFloat("HighScore", 0f);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //increase score if bool set to true so player going down
         if (scoreIncreasing)
         {
             distanceCount += pointsPerSecond * Time.deltaTime;
             
         }
-
+        //record score as new highscore if previous highscore surpassed
         if(distanceCount > hiScoreCount)
         {
             hiScoreCount = distanceCount;
             PlayerPrefs.SetFloat("HighScore", Mathf.Round(hiScoreCount));
-            //newHighscore = true;
         }
-
+        //update score and highscore values
         distanceText.text = "Score: " + Mathf.Round(distanceCount);
         hiScoreText.text = "High Score: " + Mathf.Round(hiScoreCount);
     }
@@ -68,12 +68,13 @@ public class ScoreManager : MonoBehaviour
     {
         scoreIncreasing = true;
     }
-
+    //doubles points as score meant to represent how far you travelled
     public void EnableNOS()
     {
         nos = true;
         pointsPerSecond *= 2f;
     }
+    //resets points back to normal so halves the doubled value
     public void DisableNOS()
     {
         nos = false;
@@ -82,6 +83,7 @@ public class ScoreManager : MonoBehaviour
 
     public void IncreaseScore(float amount)
     {
+        //plays a pulse animation on your score to let player know that it increased
         StartAnimation();
 
         if (!doublePoints)

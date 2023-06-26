@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//script handles animation event time freize event and UI animation of unscaled time
 public class AnimationToMPKPanel : MonoBehaviour
 {
     public ScoreManager scoreManager;

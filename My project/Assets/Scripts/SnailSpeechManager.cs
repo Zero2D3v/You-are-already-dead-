@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+//script responsible for Snail NPC fact text on start menu
 public class SnailSpeechManager : MonoBehaviour
 {
     public TextWriter textWriter;

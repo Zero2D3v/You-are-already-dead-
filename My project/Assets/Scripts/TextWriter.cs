@@ -5,6 +5,7 @@ using UnityEngine;
 //using UnityEngine.UIElements;
 using UnityEngine.UI;
 
+//script that handles snail NPC text writing on start menu, sets remaining text to invisible so that the text position stays the same instead of constantly updating and moving
 public class TextWriter : MonoBehaviour
 {
     public AudioSource audioSource;

@@ -13,18 +13,20 @@ public class HighscoreTable : MonoBehaviour
 
     private void Awake()
     {
+        //get containers and template
         entryContainer = transform.Find("High Score Entry Container");
         entryTemplate = entryContainer.Find("High Score Entry Template");
-
+        //disable template
         entryTemplate.gameObject.SetActive(false);
-
+        //load any store highscores from previously written json file
         LoadHighscores();
-        
+        //convenient to call in testing so here to comment/uncomment as necessary
         //ResetHighscoreTable();
     }
 
     private void Start()
     {
+        //if new highscore add entry and tell me, otherwise add entry and tell me normal score
         if (endingManager.newHighscore)
         {
             Debug.Log("newHighscore " + endingManager.newHighScoreValue);
@@ -36,7 +38,7 @@ public class HighscoreTable : MonoBehaviour
             AddHighscoreEntry(endingManager.newHighScoreValue, "AAA");
         }
     }
-
+    //load scores from json or if first time then create new list
     private void LoadHighscores()
     {
         string jsonString = PlayerPrefs.GetString("highScoreTable");
@@ -64,7 +66,7 @@ public class HighscoreTable : MonoBehaviour
             CreateHighscoreEntryTransform(highscoreEntry, entryContainer, highscoreEntryTransformList);
         }
     }
-
+    //generate list and order them and rank them with the constraints of 23 height
     private void CreateHighscoreEntryTransform(HighscoreEntry highscoreEntry, Transform container, List<Transform> transformList)
     {
         float templateHeight = 23f;
@@ -100,7 +102,7 @@ public class HighscoreTable : MonoBehaviour
 
         transformList.Add(entryTransform);
     }
-
+    //add entry if either less than 10 entries or score higher then 10th value and replace and reorder accordingly
     public void AddHighscoreEntry(int score, string name)
     {
         // Create highscore entry
@@ -164,32 +166,6 @@ public class HighscoreTable : MonoBehaviour
                 CreateHighscoreEntryTransform(entry, entryContainer, highscoreEntryTransformList);
             }
         }
-
-        /* // Add new entry to highscores
-         highscores.highscoreEntryList.Add(highscoreEntry);
-
-         // Sort the highscores by score
-         highscores.highscoreEntryList.Sort((a, b) => b.score.CompareTo(a.score));
-
-         // Keep only the top 10 highscores
-         if (highscores.highscoreEntryList.Count > 10)
-         {
-             highscores.highscoreEntryList.RemoveRange(10, highscores.highscoreEntryList.Count - 10);
-         }
-
-         // Save updated highscores
-         string json = JsonUtility.ToJson(highscores);
-         PlayerPrefs.SetString("highScoreTable", json);
-         PlayerPrefs.Save();
-
-         // Clear existing highscore entry UI elements
-         ClearHighscoreEntryTransforms();
-
-         // Update the UI with the new highscore entries
-         foreach (HighscoreEntry entry in highscores.highscoreEntryList)
-         {
-             CreateHighscoreEntryTransform(entry, entryContainer, highscoreEntryTransformList);
-         }*/
     }
 
     private void ClearHighscoreEntryTransforms()

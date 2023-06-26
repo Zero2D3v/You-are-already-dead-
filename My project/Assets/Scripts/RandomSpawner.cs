@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//randomly spawns any tof the 3 power ups at any point on the screen offset infront of the player
 public class RandomSpawner : MonoBehaviour
 {
     public GameObject[] pickUps;
