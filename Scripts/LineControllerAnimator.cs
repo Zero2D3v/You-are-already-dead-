@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//script for handling animation of line renderer using frames
 public class LineControllerAnimator : MonoBehaviour
 {
 

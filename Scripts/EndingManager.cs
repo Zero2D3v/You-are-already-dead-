@@ -4,8 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+//script handles recorded values from previous scene, analysis of those values then which events happen because of them. Also has functions called by other scripts and is a central hub of script communication hence the manager name.
 public class EndingManager : MonoBehaviour
 {
+    //declare fields
     public Animator newHighscoreAnim;
 
     public GameObject leaderBoard;
@@ -77,9 +79,10 @@ public class EndingManager : MonoBehaviour
             win = false;
             EnableFlash();
         }
-        
+        //calls update text function after result checked
         UpdateWinLose();
     }
+    //set text on end screen
     void UpdateWinLose()
     {
         if (win)
@@ -95,6 +98,7 @@ public class EndingManager : MonoBehaviour
     //win cutscene direction including my notes pre implementation
     public void WinDecapitate()
     {
+        //my notes on how I wanted the cutscene to play out pre-implementation, room for animations in development
         //grow
         //samurai pose
         //darken screen time freeze
@@ -104,7 +108,7 @@ public class EndingManager : MonoBehaviour
         //snail monster in half
         //win screen
     }
-    //gets score and calls CheckResult() function. Called by animation event
+    //gets score from previous scene and calls CheckResult() function. Called by animation event
     public void CheckScore()
     {
         score = PlayerPrefs.GetFloat("currentScore");
@@ -116,13 +120,13 @@ public class EndingManager : MonoBehaviour
     {
         newHighscoreAnim.SetBool("newHighscore", true);
     }
-    
+    //enables highscore table and disables interfrerring text underneath for clean screen
     public void EnableLeaderBoard()
     {
         endScreenText.SetActive(false);
         leaderBoard.SetActive(true);
     }
-    //enables leaderboard on animation event
+    //enables leaderboard on animation event and plays animation dependent on result in allocated time
     public void InvokeHighScoreANimLeaderboard()
     {
         if (newHighscore)

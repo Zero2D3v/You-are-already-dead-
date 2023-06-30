@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//handles events called by menu buttons
 public class MainMenu : MonoBehaviour
 {
     public string playGameLevel;

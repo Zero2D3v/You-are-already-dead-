@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//script in charge of monster snail side of intro cutscene audio
+//script in charge of monster snail audio of intro cutscene audio, called by animation events
 public class PlayAudio : MonoBehaviour
 {
     public AudioSource sauce;

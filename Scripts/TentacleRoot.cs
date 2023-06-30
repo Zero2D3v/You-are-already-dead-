@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//script in charge of root wiggling motion and smooth segmented behaviour, from tutorial followed as was my first game jam
 public class TentacleRoot : MonoBehaviour
 {
     public int length;

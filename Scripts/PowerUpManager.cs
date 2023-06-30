@@ -79,6 +79,7 @@ public class PowerUpManager : MonoBehaviour
             MaxNPK();
         }
     }
+    //enables max NPK Ui panel and plays achievement voice recording if panel not already active which is dependent on if bars full in CheckAmounts()
     void MaxNPK()
     {
         if (!maxNPKPanel.activeSelf)
@@ -91,7 +92,7 @@ public class PowerUpManager : MonoBehaviour
             return;
         }
     }
-
+    //enables power up icon UI dependent on which one passed on function call from other script
     public void EnablePowerUpUI(GameObject powerUpUI)
     {
         if (powerUpUI.activeSelf == false)
@@ -99,6 +100,7 @@ public class PowerUpManager : MonoBehaviour
             powerUpUI.SetActive(true);
         }
     }
+    //disables icon called when power up timer finishes in different script
     public void DisablePowerUpUI(GameObject powerUpUI)
     {
         powerUpUI.SetActive(false);

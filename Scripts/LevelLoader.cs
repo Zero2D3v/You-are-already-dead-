@@ -4,6 +4,7 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//script for handling scene changes as well as menu button functions
 public class LevelLoader : MonoBehaviour
 {
     public float introTime = 8f;

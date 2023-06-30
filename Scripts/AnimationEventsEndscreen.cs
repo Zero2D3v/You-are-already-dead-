@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+//script handles New Highscore animation called by animation event if new highscore bool is true
 public class AnimationEventsEndscreen : MonoBehaviour
 {
     

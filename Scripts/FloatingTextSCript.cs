@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//script attached to pop up floating text prefab responsible for randomizing pop up offset and destroying after time
 public class FloatingTextSCript : MonoBehaviour
 {
 
